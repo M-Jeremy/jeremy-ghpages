@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.grille div {
+    height: 20px;
+    width: 20px;
+}
+
+.piece {
+    border: 2px outset;
+    border-radius: 4px;
+}
+
+.mini-grid div {
+    height: 20px;
+    width: 20px;
+}
