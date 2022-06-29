@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             moveDown()
         }
     }
-    document.addEventListener('keyup', control)
+    document.addEventListener('keydown', control)
 
     // function bouger vers le bas
     function moveDown() {
@@ -189,10 +189,12 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(timerId)
             timerId = null
             grid.classList.add('grayscale','blur-sm')
+            document.removeEventListener('keydown', control);
         } else {
             draw()
             timerId = setInterval(moveDown, 1000)
             grid.classList.remove('grayscale','blur-sm')
+            document.addEventListener('keydown', control)
             //nextRandom = Math.floor(Math.random() * lesPieces.length)
             //displayShape()
         }
@@ -226,7 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
+    window.addEventListener("keydown", function(e) {
+        if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+        }
+    }, false);
 
 
 })
